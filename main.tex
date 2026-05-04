@@ -1,0 +1,1023 @@
+\documentclass[12pt, oneside, a4paper]{book}
+\usepackage[top=2.5cm, bottom=2.5cm, left=3cm, right=2.5cm, includehead]{geometry}
+\usepackage[pdftex]{graphicx}
+\usepackage{setspace}
+\usepackage[latin1]{inputenc}
+\usepackage[cmex10]{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{ragged2e}
+\usepackage{mathptmx}   % Times New Roman font
+\usepackage{parskip}
+\usepackage{tocloft}
+\setlist[1]{itemsep=-17pt}
+\usepackage[usenames,dvipsnames,pdftex]{color}
+\usepackage{fancyhdr}
+\setlength{\headheight}{16pt}
+\setlength{\headsep}{12pt}
+\setlength{\cftbeforetoctitleskip}{-18pt}
+\setlength{\cftbeforeloftitleskip}{-18pt}
+
+\fancypagestyle{phdthesis}{%
+  \fancyhf{}
+  \lhead{\leftmark}
+  \rhead{}
+  \rfoot{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+}
+
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0pt}
+  \rfoot{\thepage}
+}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+
+\begin{document}
+
+% ── Title Page ─────────────────────────────────────────────────────────────────
+\newgeometry{top=1cm, bottom=1cm, left=1cm, right=1cm}
+\begin{titlepage}
+\begin{center}
+
+\vspace*{1.3cm}
+
+{\fontsize{18}{20}\selectfont \textbf{Frontend Architecture and System Design Program}}\\[0.7cm]
+
+{\fontsize{12}{14}\selectfont by}\\[0.7cm]
+
+{\fontsize{14}{16}\selectfont \textbf{Md. Miftahul Islam}}\\
+{\fontsize{12}{14}\selectfont 221014030}\\[0.3cm]
+
+{\fontsize{14}{16}\selectfont \textbf{Md. Nazirul Islam}}\\
+{\fontsize{12}{14}\selectfont 221014029}\\[1.3cm]
+
+\vspace{1cm}
+
+{\fontsize{11}{13}\selectfont \textit{Internship report (CSE4099-A) submitted in partial fulfillment of the\\
+requirements for the degree of}}\\[0.8cm]
+
+{\fontsize{14}{16}\selectfont \textbf{Bachelor of Science in Computer Science and Engineering}}\\
+
+\vspace{1cm}
+
+{\fontsize{12}{14}\selectfont Under the supervision of}\\[0.7cm]
+
+{\fontsize{13}{15}\selectfont \textbf{Dr. Muhammad Golam Kibria, SMIEEE}}\\
+{\fontsize{11}{13}\selectfont Professor \& Head (Academic)}\\
+{\fontsize{11}{13}\selectfont Department of Computer Science and Engineering}\\[0.8cm]
+
+{\fontsize{13}{15}\selectfont \textbf{Md. Rafshanul Hoque Siam}}\\
+{\fontsize{11}{13}\selectfont \textbf{Lead Software Engineer --- conneqtedagents.ai}}\\[1.8cm]
+
+\includegraphics[width=0.20\textwidth]{logo.png}\\[1cm]
+
+{\fontsize{12}{14}\selectfont \textbf{DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING}}\\[0.5cm]
+
+\vspace{0.8cm}
+{\fontsize{14}{16}\selectfont \textbf{UNIVERSITY OF LIBERAL ARTS BANGLADESH}}\\
+
+\vfill
+{\fontsize{10}{12}\selectfont \textbf{SPRING 2026}}
+
+\end{center}
+\end{titlepage}
+\restoregeometry
+
+% ── Copyright Page ─────────────────────────────────────────────────────────────
+\newpage
+\thispagestyle{empty}
+
+\vspace*{\fill}
+\begin{center}
+\textcopyright{} Nazirul Islam \& Miftahul Islam \\[0.5cm]
+All rights reserved
+\end{center}
+\vspace*{\fill}
+
+% ── Declaration Page ───────────────────────────────────────────────────────────
+\newpage
+\thispagestyle{empty}
+
+\begin{center}
+{\large \textbf{DECLARATION}}
+
+\vspace{2.0cm}
+
+\begin{tabular}{>{\bfseries}p{0.34\textwidth} p{0.58\textwidth}}
+  Project Title          & Frontend Architecture and System Design Program \\[4pt]
+  Author                 & \textit{Md. Miftahul Islam}                     \\[2pt]
+  Student ID             & 221014030                                       \\[4pt]
+  Author                 & \textit{Md. Nazirul Islam}                      \\[2pt]
+  Student ID             & 221014029                                       \\[4pt]
+  Supervisor (Academy)   & Dr. Muhammad Golam Kibria, SMIEEE               \\[2pt]
+  Supervisor (Industry)  & Md. Rafshanul Hoque Siam                        \\
+\end{tabular}
+
+\vspace{0.25cm}
+\hrule
+\vspace{1.2cm}
+
+\setstretch{1.35}
+\justifying
+We declare that this internship report entitled
+\textit{Frontend Architecture and System Design Program}
+is the result of our own work except as cited in the references.
+The internship report has not been accepted for any degree and is not
+concurrently submitted in candidature of any other degree.
+\setstretch{1.0}
+
+\vspace{2.5cm}
+
+\rule{0.60\textwidth}{0.4pt}
+
+\vspace{0.25cm}
+
+\begin{flushleft}
+  \textbf{Md. Miftahul Islam \& Md. Nazirul Islam}\\[2pt]
+  \textbf{221014030 \& 221014029}
+\end{flushleft}
+
+\vspace{0.7cm}
+
+Department of Computer Science and Engineering\\
+University of Liberal Arts Bangladesh
+
+\vspace{0.5cm}
+
+\textbf{Date:} April 22, 2026
+
+\end{center}
+
+% ── Letter of Transmission ─────────────────────────────────────────────────────
+\newpage
+\newgeometry{top=2.5cm, bottom=2.5cm, left=4cm, right=2.5cm}
+\thispagestyle{empty}
+
+\section*{Letter of Transmission}
+
+\noindent April 22, 2026 \\[0.5cm]
+
+\noindent The Chairperson,\\
+Department of Computer Science \& Engineering,\\
+University of Liberal Arts Bangladesh (ULAB),\\
+Dhanmondi, Dhaka.\\[0.5cm]
+
+\noindent Through: Supervisor, Dr.\ Muhammad Golam Kibria, SMIEEE\\[0.5cm]
+
+\noindent \textbf{Subject: Submission of Internship Report on ``Frontend Architecture and System Design Program''}\\[0.5cm]
+
+We are submitting herewith our internship report on \textit{Frontend Architecture and
+System Design Program}. We had the opportunity to complete our internship at
+\textbf{conneqtedagents.ai} under the industry supervision of \textbf{Md.\ Rafshanul
+Hoque Siam}, Lead Software Engineer. Our internship spanned the Spring 2026 semester,
+during which we actively participated in the design and development of scalable frontend
+systems for a production web application.
+
+It was a great pleasure for us to work at conneqtedagents.ai. Under the guidance of our
+supervisors and in fulfilment of the requirements of the University of Liberal Arts
+Bangladesh, this internship was carried out with full dedication and sincerity.
+
+We have prepared this report with our utmost earnestness and effort. We request your
+approval of this internship report for partial fulfilment of the requirements for the
+degree of Bachelor of Science in Computer Science and Engineering.\\[0.3cm]
+
+Thank you.\\[1.5cm]
+
+\begin{minipage}[t]{0.45\textwidth}
+Sincerely yours,\\[2cm]
+$\overline{\text{Md. Miftahul Islam}}$\\
+ID: 221014030\\
+Program: BSc.\ CSE\\[1.5cm]
+$\overline{\text{Md. Nazirul Islam}}$\\
+ID: 221014029\\
+Program: BSc.\ CSE
+\end{minipage}%
+\hfill%
+\begin{minipage}[t]{0.45\textwidth}
+Academic Supervisor:\\[2cm]
+$\overline{\text{Dr.\ Muhammad Golam Kibria, SMIEEE}}$\\
+Professor \& Head (Academic)\\
+Department of CSE\\
+University of Liberal Arts Bangladesh
+\end{minipage}
+
+\restoregeometry
+\cleardoublepage
+
+% ── Certificate ────────────────────────────────────────────────────────────────
+\thispagestyle{empty}
+
+\section*{Certificate}
+
+This is to certify that the report titled \textit{Frontend Architecture and System Design
+Program} has been submitted by \textbf{Md. Miftahul Islam} (ID: 221014030) and
+\textbf{Md. Nazirul Islam} (ID: 221014029) in partial fulfillment of the requirements
+for the Bachelor degree (BSc.\ in Computer Science and Engineering) in the Department
+of Computer Science and Engineering of University of Liberal Arts Bangladesh. This is a
+record of work carried out by the students under our supervision. No part of the
+internship report has been submitted for any other degree and the performance of the
+students has been accepted as satisfactory.\\[1.5cm]
+
+\textbf{Supervisor (Academic):}\\[2cm]
+$\overline{\text{Dr.\ Muhammad Golam Kibria, SMIEEE}}$\\
+Professor \& Head (Academic)\\
+Department of Computer Science and Engineering\\
+University of Liberal Arts Bangladesh\\[1.5cm]
+
+\textbf{Supervisor (Industry):}\\[2cm]
+$\overline{\text{Md.\ Rafshanul Hoque Siam}}$\\
+Lead Software Engineer\\
+conneqtedagents.ai
+
+\thispagestyle{empty}
+\cleardoublepage
+
+% ── Front Matter ───────────────────────────────────────────────────────────────
+\pagestyle{phdthesis}
+\frontmatter
+\begin{doublespace}
+
+\addcontentsline{toc}{chapter}{Executive Summary}
+\chapter*{Executive Summary}
+
+This report presents a record of the work we completed during our internship at
+\textbf{conneqtedagents.ai} under the supervision of \textbf{Md.\ Rafshanul Hoque
+Siam}, Lead Software Engineer. Rather than treating the internship only as an academic
+requirement, we approached it as an opportunity to understand how real client work is
+planned, reviewed, and delivered inside a professional frontend engineering team.
+
+Our assigned work centered on \textbf{Frontend Architecture and System Design} for a
+premium leather manufacturing company's website. The project involved building a modern,
+responsive, multi-page web experience using \textbf{Next.js 15 (App Router)},
+\textbf{TypeScript}, \textbf{React 19}, \textbf{Tailwind CSS 4}, \textbf{Framer Motion},
+and \textbf{Swiper}. We worked on reusable section components, animated page elements,
+layout composition, responsive behavior, and content presentation aligned with the
+client's visual identity.
+
+This report explains the company context, the purpose of the internship, the methods we
+followed during development, and the product outcomes we contributed to. It also records
+the technical and professional lessons we gained from the experience and concludes with
+recommendations based on the challenges and observations we made during the internship.
+
+\cleardoublepage
+
+\addcontentsline{toc}{chapter}{Acknowledgements}
+\chapter*{Acknowledgements}
+
+We would like to express our sincere gratitude to our academic supervisor,
+\textbf{Dr.\ Muhammad Golam Kibria, SMIEEE}, Professor \& Head (Academic) of the
+Department of Computer Science and Engineering, University of Liberal Arts Bangladesh,
+for his invaluable guidance, continuous encouragement, and support throughout the
+duration of this internship and in the preparation of this report.
+
+We would also like to extend our heartfelt thanks to our industry supervisor,
+\textbf{Md.\ Rafshanul Hoque Siam}, Lead Software Engineer at conneqtedagents.ai,
+for his tremendous support, technical mentorship, and hands-on guidance during our
+internship. His expertise in frontend architecture and system design greatly enriched
+our learning experience.
+
+Finally, we would like to thank everyone at conneqtedagents.ai who provided feedback,
+shared knowledge, and made our internship a truly rewarding and growth-oriented experience.
+
+\cleardoublepage
+
+\begin{spacing}{1.5}
+\tableofcontents
+\end{spacing}
+
+\cleardoublepage
+
+\addcontentsline{toc}{chapter}{List of Figures}
+\listoffigures
+
+\cleardoublepage
+
+% ── Main Matter ────────────────────────────────────────────────────────────────
+\mainmatter
+
+\chapter{Introduction}
+
+\section{Presentation of the Company}
+
+\begin{flushleft}
+The internship program gave us direct exposure to the professional environment that exists
+beyond classroom projects. Through this placement, we were able to observe how actual
+client requirements are translated into engineering tasks, reviewed through collaboration,
+and refined into production-ready frontend deliverables.
+
+conneqtedagents.ai is a software company that works on modern web products and intelligent
+digital systems for local and international clients. From our experience inside the team,
+the company places strong emphasis on structured frontend architecture, maintainable code,
+practical design execution, and the steady use of modern development tools.
+
+What stood out most during our internship was the company's working style: tasks were
+handled through iterative delivery, review-based improvement, and close attention to both
+technical correctness and user-facing quality. This environment gave us a realistic view
+of how a professional software team balances speed, clarity, and product standards.
+\end{flushleft}
+
+\section{Objective of the Internship}
+
+The objective of this internship was not only to satisfy the academic requirement of our
+Bachelor degree, but also to gain experience in the kind of engineering work that cannot
+be fully reproduced in coursework alone. We wanted to understand how frontend systems are
+actually designed, reviewed, and delivered when the output is meant for a real client and
+real users.
+
+By joining conneqtedagents.ai as frontend engineering interns, we aimed to strengthen our
+skills in component-based development, responsive design, animation-heavy user interfaces,
+and structured application architecture. We were also interested in learning how senior
+engineers make decisions about code quality, maintainability, visual polish, and delivery
+workflow inside a production setting.
+
+For us, the internship served as a transition point between academic learning and
+professional practice. It allowed us to test our existing knowledge, identify our weak
+areas, and build confidence through meaningful project work rather than isolated exercises.
+
+\section{Scope and Methodology}
+
+\subsection{Overview}
+
+This report provides a comprehensive account of our internship experience at
+conneqtedagents.ai during the Spring 2026 semester. The scope of the internship covered
+the full frontend development lifecycle of a premium leather company portfolio website,
+from initial requirement analysis and component architecture design through to
+implementation, testing, and final delivery.
+
+Our work was scoped to the frontend layer of the product --- encompassing page layout,
+section component development, animation implementation, responsive design, and
+client-side interactivity. The methodology we followed was aligned with professional
+software engineering practices used in production environments, adapted to the specific
+demands of a visually driven, multi-page marketing website.
+
+\subsection{Technology Stack}
+
+The project was built on a modern, production-ready frontend technology stack selected
+by the organization to ensure performance, scalability, and developer experience:
+
+\begin{itemize}
+  \item \textbf{Next.js 15 (App Router)} for file-based routing, server and client
+  component management, metadata handling, and static page generation.
+  \item \textbf{TypeScript} for static type safety, precise interface definitions, and
+  compile-time error detection across the entire codebase.
+  \item \textbf{React 19} as the core UI rendering library, used with functional
+  components and hooks throughout.
+  \item \textbf{Tailwind CSS 4} as the utility-first styling framework for building
+  a fully responsive and visually consistent design system.
+  \item \textbf{Framer Motion} for scroll-driven parallax effects, entrance animations,
+  staggered transitions, and page-level shutter animations.
+  \item \textbf{Swiper} for touch-friendly, responsive image carousel and product
+  gallery components.
+  \item \textbf{DOMPurify \& jsdom} for sanitizing rich HTML content rendered in
+  text-heavy sections, preventing XSS vulnerabilities.
+  \item \textbf{Lucide React \& React Icons} for scalable, consistent iconography
+  across navigation, call-to-action, and informational components.
+\end{itemize}
+
+\subsection{Development Process}
+
+Our development process followed an iterative, task-driven workflow aligned with the
+professional conventions of the organization:
+
+\begin{itemize}
+  \item \textbf{Requirement Understanding:} Each task began with a review of design
+  specifications and a discussion with our industry supervisor to clarify expected
+  behavior, visual standards, and technical constraints.
+  \item \textbf{Branch-Based Development:} We worked on dedicated feature branches for
+  each section or component, keeping changes isolated and enabling clean pull request
+  reviews.
+  \item \textbf{Implementation:} Features were implemented following the project's
+  established folder structure and naming conventions, ensuring consistency with the
+  existing codebase.
+  \item \textbf{Code Review and Iteration:} Every pull request was reviewed by our
+  industry supervisor before merging. Review feedback was addressed promptly, and
+  revisions were made in the same branch before re-submission.
+  \item \textbf{Delivery and Integration:} Completed and approved features were merged
+  into the main branch and verified in the integrated build before being considered
+  delivered.
+\end{itemize}
+
+\subsection{Component Design and Responsiveness}
+
+A core principle of our development approach was component-driven architecture.
+Each website section was encapsulated as a self-contained React component with
+well-defined, typed props. This enabled reuse across multiple pages and made
+individual sections easy to modify or extend without side effects.
+
+Responsiveness was treated as a first-class requirement. We used Tailwind CSS
+responsive modifiers (\texttt{sm:}, \texttt{md:}, \texttt{lg:}) to build layouts
+that adapt fluidly across mobile, tablet, and desktop breakpoints. Key patterns
+included collapsible navigation for mobile, flexible two-column content-image
+sections that stack on smaller screens, and grid-based category layouts with
+dynamic column counts.
+
+Page-level composition was handled by page components under \texttt{components/pages/},
+which assembled the correct section components for each route. This separation between
+layout composition and section implementation kept each file focused and maintainable.
+
+\subsection{Animation and Integration}
+
+Animations were implemented using Framer Motion throughout the project. Scroll-driven
+effects were achieved via the \texttt{useScroll} and \texttt{useTransform} hooks, which
+allowed background parallax and content fade effects to respond continuously to the
+user's scroll position. Entrance animations for page sections used \texttt{motion}
+variants with \texttt{initial}, \texttt{animate}, and \texttt{exit} states, while the
+\texttt{AnimatePresence} component managed the lifecycle of conditionally rendered
+elements such as the mobile navigation drawer.
+
+The page-level shutter transition was implemented as a higher-order component
+(\texttt{withShutter}), wrapping each page with a branded entrance animation on
+initial load. This approach kept animation logic fully decoupled from page content
+components.
+
+Rich HTML content, sourced from mock data and intended for eventual CMS integration,
+was rendered using \texttt{dangerouslySetInnerHTML} with DOMPurify sanitization applied
+before injection, ensuring that content-driven sections remained safe against
+cross-site scripting vulnerabilities.
+
+\subsection{Testing, Documentation, and Reporting}
+
+Given the nature of the project as a frontend portfolio website, testing focused on
+functional and visual correctness rather than automated unit tests. Each completed
+component was manually tested across multiple viewport sizes using the browser's
+responsive design mode, verifying layout integrity at mobile, tablet, and desktop
+breakpoints.
+
+Interactive components --- including the navbar drawer, shutter transition, parallax
+hero, and image stack previewer --- were tested for correct animation behavior, smooth
+transitions, and the absence of visual artifacts or layout shifts.
+
+Code documentation was maintained through clear component prop interfaces using
+TypeScript, which served as inline documentation for expected inputs, types, and
+optional configurations. Shared types were centralized in the \texttt{interfaces/}
+directory, making them discoverable and reusable across the codebase.
+
+Progress reporting was conducted through regular check-ins with our industry supervisor,
+during which completed sections were reviewed visually, feedback was captured, and
+upcoming tasks were prioritized. This internship report itself constitutes the formal
+written record of the work carried out, the methodologies applied, and the outcomes
+achieved during the Spring 2026 internship period.
+
+\chapter{conneqtedagents.ai}
+
+\section{About conneqtedagents.ai}
+
+Based on our experience during the internship, conneqtedagents.ai can be described as a
+modern software company that builds digital products with a strong focus on structured
+engineering practices and real business usefulness. The company works across several kinds
+of web-based solutions, including client-facing websites, internal systems, and intelligent
+software products that incorporate contemporary frontend and backend technologies.
+
+From the engineering culture we observed, the organization values maintainability,
+incremental improvement, and clarity in implementation. The work environment encouraged us
+to think beyond simply making interfaces look correct; we were expected to consider how
+components scale, how design decisions affect future maintenance, and how code should be
+organized so that it remains understandable to other developers.
+
+\section{Mission and Vision}
+
+\noindent\underline{Mission}: From our understanding of the company's work, its mission is
+to deliver practical and well-engineered digital products that help businesses solve
+real operational and communication problems through technology.
+
+\noindent\underline{Vision}: Its long-term direction appears to be centered on building
+reliable, modern, and increasingly intelligent software systems that combine strong user
+experience with scalable technical foundations.
+
+\section{Core Values and Engineering Culture}
+
+conneqtedagents.ai maintains a strong engineering culture centered on:
+
+\begin{itemize}
+  \item \textbf{Quality:} Every product is built with a commitment to code quality,
+  performance, and reliability.
+  \item \textbf{Innovation:} The team constantly adopts and evaluates emerging
+  technologies to stay ahead of industry trends.
+  \item \textbf{Collaboration:} Open communication and iterative feedback are core
+  to how the team operates.
+  \item \textbf{Developer Experience:} The company invests in tooling, workflows, and
+  processes that empower engineers to do their best work.
+\end{itemize}
+
+\section{Services}
+
+\noindent\textbf{i.\ AI-Powered Platform Development}
+
+The company develops intelligent platforms that combine modern web technologies with
+automation-oriented features to support business workflows and digital operations.
+
+\noindent\textbf{ii.\ Frontend Architecture and System Design}
+
+conneqtedagents.ai also provides frontend engineering services focused on reusable
+component architecture, performance-conscious implementation, and polished interfaces
+built with tools such as Next.js, TypeScript, and React.
+
+\noindent\textbf{iii.\ Full-Stack Web Application Development}
+
+The company works across full-stack product development as well, covering both backend
+service design and user-facing application layers.
+
+\noindent\textbf{iv.\ Cloud-Native Deployment and DevOps}
+
+It also follows modern deployment and delivery practices that support maintainable
+software releases and long-term product operation.
+
+\chapter{Details of Internship Work}
+
+The main objective of the internship was to gain experience in a real professional
+software development environment and to apply the knowledge acquired during our academic
+program to production-grade engineering tasks. Throughout our internship at
+conneqtedagents.ai, we were actively involved in the design and development of a
+\textbf{premium leather company portfolio website} --- a fully responsive, multi-page
+marketing website built using \textbf{Next.js 15 (App Router)}, \textbf{TypeScript},
+\textbf{React 19}, \textbf{Tailwind CSS 4}, \textbf{Framer Motion}, and \textbf{Swiper}.
+
+The website serves as the digital presence of a premium leather manufacturing brand,
+showcasing the company's product catalogue, leather craftsmanship heritage, service
+offerings, and sustainability commitments. The project required careful attention to
+visual quality, animation fidelity, and component reusability across multiple pages.
+
+\section{Technologies Used}
+
+\begin{itemize}
+  \item \textbf{Next.js 15 (App Router):} A React-based framework used for file-based
+  routing, server and client component separation, metadata management, and static
+  page generation. The App Router paradigm enabled clean layout composition across
+  shared navigation and footer structures.
+  \item \textbf{TypeScript:} A strongly typed superset of JavaScript that enabled us
+  to write safer, more maintainable code with compile-time type checking, precise
+  interface definitions, and generic component props across the entire codebase.
+  \item \textbf{React 19:} The core UI library used for building component-based user
+  interfaces. We used React hooks for managing component state, scroll effects, and
+  animated transitions.
+  \item \textbf{Tailwind CSS 4:} A utility-first CSS framework used to design a
+  fully responsive and visually consistent UI. We leveraged Tailwind's composition
+  model to build reusable, maintainable styles across all page sections.
+  \item \textbf{Framer Motion:} A production-ready animation library for React, used
+  extensively to implement parallax hero effects, scroll-driven opacity transitions,
+  staggered list animations, and page-level shutter transitions.
+  \item \textbf{Swiper:} A modern touch-friendly slider library used for implementing
+  product and image gallery carousels with smooth swipe gestures and responsive
+  breakpoints.
+  \item \textbf{Lucide React \& React Icons:} Icon libraries used to provide
+  consistent, scalable iconography across navigation menus, call-to-action buttons,
+  and informational sections.
+  \item \textbf{DOMPurify \& jsdom:} Used to safely sanitize server-rendered HTML
+  strings injected into rich-text section components, preventing XSS vulnerabilities
+  in content-driven sections.
+\end{itemize}
+
+\section{Project Architecture}
+
+The project followed a structured folder architecture aligned with Next.js App Router
+conventions:
+
+\begin{itemize}
+  \item \textbf{app/:} Contains all route segments, each with a dedicated
+  \texttt{page.tsx} file. Routes include \texttt{/}, \texttt{/about-us},
+  \texttt{/products}, \texttt{/services}, \texttt{/leather-experience},
+  \texttt{/contact-us}, \texttt{/privacy-policy}, and \texttt{/cookie-policy}.
+  \item \textbf{components/sections/:} Reusable section-level components such as the
+  hero section, category layout, content-image section, footer, and navbar.
+  \item \textbf{components/pages/:} Page-level composition components that assemble
+  the appropriate section components for each route.
+  \item \textbf{components/UI/:} Atomic UI primitives shared across sections.
+  \item \textbf{assets/:} Centralized image asset exports organized by category
+  (products, categories, logo, others).
+  \item \textbf{constants/, mock/, interfaces/, utils/:} Shared data, TypeScript
+  type definitions, mock content, and utility functions.
+\end{itemize}
+
+\section{Key Features Developed}
+
+During our internship, we contributed to the design and implementation of all major
+website sections. The following subsections describe the key features delivered.
+
+\subsection{Animated Hero Sections with Parallax Effect}
+
+We implemented a full-screen hero section with a parallax background effect using
+Framer Motion's \texttt{useScroll} and \texttt{useTransform} hooks. The background
+image translates vertically as the user scrolls, while the foreground content fades
+out smoothly. This section is reused across all major pages with configurable title,
+description, and optional breadcrumb navigation.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=15cm, height=9cm]{hero_section.png}
+  \caption{Animated Hero Section with Parallax Scroll Effect}
+  \label{fig:hero_section}
+\end{figure}
+
+\newpage
+
+\subsection{Category Layout and Product Showcase}
+
+We built a category layout section that displays the leather product categories
+(Nautical, Aviation, Fashion, Automotive, Interior Design, and Regenerated Materials)
+in a visually rich grid. Each category card is backed by high-resolution \texttt{.avif}
+images and includes a title, description, and navigation link. The section integrates
+a description header built from a shared \texttt{DescriptionSection} component.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=15cm, height=9cm]{category_layout.png}
+  \caption{Leather Category Layout Section}
+  \label{fig:category_layout}
+\end{figure}
+
+\newpage
+
+\subsection{Content-Image Sections}
+
+We implemented a flexible \texttt{ContentImageSection} component that renders a
+two-column layout alternating between text content and an image. The layout direction
+is configurable (\texttt{leftToRight} or \texttt{rightToLeft}), supporting reuse across
+multiple pages with different content and visual orientations. Rich HTML content is
+safely rendered using DOMPurify sanitization.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=15cm, height=9cm]{content_image_section.png}
+  \caption{Configurable Content-Image Section}
+  \label{fig:content_image}
+\end{figure}
+
+\newpage
+
+\subsection{Lean Image Stack Previewer}
+
+We developed a lean image stack previewer component that displays a layered stack of
+product images with a hover-driven reveal interaction. This component was used on the
+home page to provide an interactive visual preview of the company's leather product
+range, enhancing engagement without requiring a full carousel.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=15cm, height=9cm]{image_stack_previewer.png}
+  \caption{Lean Image Stack Previewer Component}
+  \label{fig:image_stack}
+\end{figure}
+
+\newpage
+
+\subsection{Animated Navbar with Drawer Navigation}
+
+We implemented a responsive navbar component with scroll-aware styling. On scroll, the
+navbar transitions from a transparent overlay to a solid background using Framer Motion
+animation controls. On mobile, a full-screen animated drawer menu slides in with
+staggered link animations, providing a smooth and accessible navigation experience.
+The drawer includes page descriptions alongside each navigation link.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=15cm, height=9cm]{navbar_drawer.png}
+  \caption{Responsive Navbar with Animated Drawer}
+  \label{fig:navbar}
+\end{figure}
+
+\newpage
+
+\subsection{Page Transition Shutter HOC}
+
+We implemented a higher-order component (HOC) called \texttt{withShutter} that wraps
+page components with an animated entrance transition. On initial render, a shutter-style
+overlay sweeps across the screen and reveals the page content, providing a polished
+brand-consistent page load experience across all routes.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=15cm, height=9cm]{shutter_transition.png}
+  \caption{Shutter Page Transition Higher-Order Component}
+  \label{fig:shutter}
+\end{figure}
+
+\chapter{Key Learnings}
+
+From both a technical and professional perspective, the internship at conneqtedagents.ai
+proved to be an immensely valuable learning experience. Working on real client-facing
+frontend products gave us practical insight into how projects are analyzed, planned,
+implemented, reviewed, and delivered in a professional environment.
+
+\section{Analysis and Findings}
+
+During the internship, we observed that successful frontend delivery depends not only on
+writing functional code, but also on understanding user needs, aligning with branding
+requirements, and maintaining consistency across the entire product surface. Our analysis
+of the assigned work showed that reusable component architecture, responsive design, and
+carefully managed animation patterns were essential for sustaining development speed and
+visual quality.
+
+We also found that a project with multiple content-heavy pages benefits significantly
+from centralized assets, shared section components, and typed interfaces. These patterns
+reduce duplication, simplify maintenance, and improve collaboration between developers.
+
+\section{Project Outcomes}
+
+The internship resulted in the successful delivery of multiple frontend outputs that
+demonstrated both technical execution and practical product value.
+
+\subsection{Personal Portfolio / Company Website}
+
+One of the major outcomes of the internship was the design and development of a
+multi-page company website for a premium leather manufacturing brand. The website
+showcases the company's services, products, brand identity, and leather craftsmanship
+through modern layouts, animated hero sections, content-image compositions, and a
+responsive navigation system.
+
+This outcome demonstrated our ability to build a polished public-facing product using
+modern frontend technologies while maintaining reusability, responsiveness, and visual
+consistency across pages.
+
+\subsection{Custom Admin Panel (ELF Dashboard)}
+
+In addition to the company website work, the internship also exposed us to the broader
+expectations of internal product interfaces such as custom dashboards and structured
+admin-facing systems. Through this context, we developed a clearer understanding of how
+frontend architecture differs between marketing websites and dashboard-oriented products.
+
+We learned that an admin panel such as an ELF Dashboard requires a stronger emphasis on
+information hierarchy, reusable data display patterns, role-aware navigation, and task
+efficiency. Even where our direct contribution was centered on the website, the exposure
+to this category of product improved our understanding of scalable frontend system design.
+
+\section{Learning and Development}
+
+The internship accelerated both our technical growth and our professional maturity.
+The following subsections summarize the main areas of learning.
+
+\subsection{Technical Learning}
+
+The technical learning gained during the internship was substantial. We acquired
+hands-on experience with:
+
+\begin{itemize}
+  \item \textbf{Next.js 15 App Router:} We learned how to structure route segments,
+  separate server and client components, manage layouts, and configure page-level
+  metadata in a production codebase.
+  \item \textbf{TypeScript in Production:} We practiced writing interfaces and typed
+  props for reusable components, improving safety, readability, and maintainability.
+  \item \textbf{Component-Driven Architecture:} We learned to build section-level and
+  page-level components that can be reused across different routes without unnecessary
+  duplication.
+  \item \textbf{Responsive Design:} We deepened our ability to build interfaces that
+  adapt cleanly across mobile, tablet, and desktop devices using Tailwind CSS.
+  \item \textbf{Animation Systems:} We became proficient with Framer Motion for
+  parallax effects, transitions, and motion-driven interactions that improve the user
+  experience.
+  \item \textbf{Safe Content Rendering:} We learned the importance of sanitizing HTML
+  content using DOMPurify before rendering it in the DOM, helping prevent XSS-related
+  vulnerabilities.
+\end{itemize}
+
+\subsection{Professional Learning}
+
+The internship also contributed significantly to our professional development.
+
+\begin{itemize}
+  \item We learned how to communicate progress clearly during supervisor check-ins.
+  \item We developed discipline in following project conventions and maintaining code
+  consistency within an existing codebase.
+  \item We learned to accept and apply code review feedback constructively.
+  \item We improved our ability to estimate work, break down tasks, and iterate on
+  features based on feedback.
+  \item We gained a practical understanding of how client expectations influence design,
+  content presentation, and delivery quality.
+\end{itemize}
+
+\section{Tools and Technologies Used}
+
+The internship required consistent use of a modern frontend toolchain. For clarity,
+the technologies can be grouped as follows.
+
+\subsection{Frontend}
+
+The frontend layer was primarily built using \textbf{Next.js 15}, \textbf{React 19},
+\textbf{TypeScript}, and \textbf{Tailwind CSS 4}. These technologies formed the
+foundation for routing, rendering, component design, styling, and application structure.
+
+\subsection{Libraries and Tools}
+
+To enhance functionality and developer productivity, we worked with several additional
+libraries and tools including \textbf{Framer Motion} for animation, \textbf{Swiper}
+for image sliders, \textbf{Lucide React} and \textbf{React Icons} for iconography,
+and \textbf{DOMPurify} with \textbf{jsdom} for safe HTML sanitization.
+
+\subsection{Development Environment and Version Control}
+
+The development environment centered around \textbf{Visual Studio Code}, where we used
+extensions and integrated terminal workflows for coding, previewing, and debugging the
+application. Source code was managed using \textbf{Git}, with branch-based development
+and pull request workflows supporting collaboration, review, and controlled integration
+of completed features.
+
+\section{User Guidelines}
+
+\subsection{Company Website}
+
+The company website is intended to present the brand, products, and services in a clear
+and visually engaging manner. Users should be able to navigate between the Home,
+About Us, Products, Services, Leather Experience, Contact Us, Privacy Policy, and
+Cookie Policy pages using the primary navigation menu. On mobile devices, the drawer
+navigation provides the same access in a compact form.
+
+Users can browse category-focused sections, read descriptive content about the
+company's philosophy and craftsmanship, and interact with animated content blocks
+designed to improve engagement without reducing clarity.
+
+\subsection{Admin Dashboard}
+
+For admin-oriented products such as a custom dashboard, the key guideline is to design
+interfaces around clarity, efficiency, and task completion. Users should be able to
+identify navigation options quickly, locate data without confusion, and perform common
+actions with minimal friction. From our internship experience, we learned that admin
+interfaces must prioritize usability, consistency, and structured information layout
+over purely decorative presentation.
+
+\section{Summary of Findings}
+
+In summary, our internship showed us that frontend engineering is not just about writing
+components that render correctly on screen. It involves making decisions about structure,
+clarity, responsiveness, animation, maintainability, and user expectations at the same
+time. The strongest learning came from handling real project constraints, where every
+technical choice had visible impact on delivery quality.
+
+The experience made us more aware of how professional frontend work is evaluated in
+practice. A successful result depends on technical accuracy, visual consistency,
+communication with reviewers, and the ability to revise work without losing overall
+system coherence. This understanding has prepared us more realistically for future roles
+in frontend and product-focused software development.
+
+\chapter{Conclusion}
+
+\section{Major Benefits of the Internship}
+
+The internship at conneqtedagents.ai was an exceptionally rewarding experience that
+delivered significant benefits both technically and professionally. Working on a
+production-grade portfolio website for a premium leather manufacturing company gave us
+direct exposure to the standards and expectations of real client delivery in a
+professional software environment.
+
+From a technical standpoint, we gained hands-on proficiency in Next.js 15 (App Router),
+TypeScript, React 19, Tailwind CSS 4, Framer Motion, and Swiper --- a modern and
+commercially relevant technology stack. We moved beyond academic exercises to building
+real animated components, responsive layouts, and reusable architectural patterns that
+are deployed for an actual client.
+
+From a professional standpoint, the internship taught us how to interpret client
+requirements, collaborate under the guidance of a senior engineer, manage iterative
+delivery, and participate in code review cycles. We also developed a stronger sense of
+responsibility for code quality, security, and performance in a real product context.
+
+\section{Limitations of the Internship}
+
+The internship period, while highly productive, was not without its challenges and
+limitations. The primary challenge we encountered was adapting to the design language
+and visual standards expected by an international client. The website demanded a high
+level of visual polish, which required a more design-oriented mindset than typical
+application development exercises in an academic setting.
+
+Several tools and techniques --- including advanced Framer Motion scroll-driven
+animations, Swiper's responsive breakpoint configuration, and DOMPurify-based HTML
+sanitization --- were new to us at the start and required independent research before
+we could apply them confidently.
+
+Performance considerations for image-heavy pages, using \texttt{.avif} assets and
+external image sources, also required careful attention. Time constraints limited the
+extent to which we could optimize image loading strategies, apply lazy loading
+throughout, and conduct formal performance auditing using Lighthouse.
+
+Furthermore, the internship was primarily frontend-focused, which limited our exposure
+to backend API design, server deployment workflows, and continuous integration pipelines
+--- areas that are equally important in full-stack product development.
+
+\section{Recommendations for conneqtedagents.ai}
+
+Based on our experience during the internship, we offer the following recommendations
+to conneqtedagents.ai for improving future intern engagements and project quality:
+
+\begin{itemize}
+  \item \textbf{Structured Onboarding:} Preparing a written onboarding guide covering
+  the project's design system, component conventions, animation patterns, and folder
+  architecture would significantly reduce the initial ramp-up time for new contributors.
+  \item \textbf{Design System Documentation:} Formalizing the typography scale, spacing
+  conventions, color palette, and animation timing guidelines into a documented design
+  system would help maintain visual consistency as the project scales.
+  \item \textbf{Image Optimization Pipeline:} Switching to Next.js \texttt{<Image />}
+  components throughout and serving all assets from a CDN would meaningfully improve
+  Lighthouse performance scores and Core Web Vitals.
+  \item \textbf{Component Library:} Introducing a component storybook or visual
+  regression testing suite would support long-term maintainability and prevent visual
+  regressions as new sections are added.
+\end{itemize}
+
+\section{Recommendations for Future Interns}
+
+We offer the following recommendations to students who will undertake a similar
+internship in frontend engineering:
+
+\begin{itemize}
+  \item \textbf{Study the App Router paradigm early:} The distinction between server
+  and client components in Next.js 15 is fundamental. Understanding this model before
+  starting will allow you to contribute more confidently from the first week.
+  \item \textbf{Practice animation-driven development:} Framer Motion is a powerful
+  but nuanced library. Spending time with its documentation and sandbox examples prior
+  to the internship will reduce friction when implementing complex transitions.
+  \item \textbf{Understand security basics:} Be aware of XSS vulnerabilities when
+  rendering dynamic HTML. Understanding how and why to use DOMPurify is a practical
+  skill that will be relevant on almost any content-driven project.
+  \item \textbf{Embrace code review:} Treat code review not as a quality gate but as
+  a learning channel. The feedback received during reviews is often the fastest path
+  to improving your engineering judgment.
+  \item \textbf{Ask early, iterate often:} Clarifying design and requirement ambiguities
+  with your supervisor at the start of each task prevents costly late-stage revisions
+  and builds trust with the team.
+\end{itemize}
+
+\section{Recommendations for the University and Internship Program}
+
+Based on our internship experience, we also offer recommendations directed at the
+University of Liberal Arts Bangladesh and the CSE internship program:
+
+\begin{itemize}
+  \item \textbf{Introduce modern frontend tooling in the curriculum:} Courses
+  covering Next.js, TypeScript, and component-driven architecture would better prepare
+  students for the kinds of tasks they encounter in modern frontend internships.
+  \item \textbf{Include animation and UI libraries in elective offerings:} Tools such
+  as Framer Motion and Tailwind CSS are industry-standard but absent from most
+  traditional curricula. Exposure to these early would reduce the learning curve
+  during internships.
+  \item \textbf{Strengthen the industry-academia bridge:} More frequent interaction
+  between industry supervisors and the university throughout the internship period
+  would help align expectations and ensure that students are being exposed to
+  educationally valuable tasks.
+  \item \textbf{Encourage portfolio-based internship placements:} Internships that
+  result in a publicly accessible deliverable (such as a deployed website) provide
+  students with tangible evidence of professional work, which is highly valuable for
+  early career placement.
+\end{itemize}
+
+\section{Final Remark}
+
+The internship at conneqtedagents.ai became one of the most meaningful parts of our
+undergraduate journey because it required us to apply what we had learned in a context
+where quality, timing, review feedback, and client expectations all mattered at once.
+That shift from academic exercise to professional responsibility changed how we now think
+about software work.
+
+We are ending this internship with stronger technical judgment, better work discipline,
+and a much clearer understanding of the level of care required in modern frontend
+development. We remain sincerely grateful to our academic supervisor
+\textbf{Dr.\ Muhammad Golam Kibria, SMIEEE}, our industry supervisor
+\textbf{Md.\ Rafshanul Hoque Siam}, and the team at conneqtedagents.ai for trusting us
+with meaningful work and helping us grow through that process.
+
+\end{doublespace}
+
+\backmatter
+\cleardoublepage
+
+\addcontentsline{toc}{chapter}{References}
+\chapter*{References}
+
+\begin{itemize}
+  \item Next.js Documentation\\
+  \url{https://nextjs.org/docs}
+
+  \item TypeScript Handbook\\
+  \url{https://www.typescriptlang.org/docs/handbook/}
+
+  \item React Documentation\\
+  \url{https://react.dev/}
+
+  \item Tailwind CSS Documentation\\
+  \url{https://tailwindcss.com/docs}
+
+  \item Framer Motion Documentation\\
+  \url{https://www.framer.com/motion/}
+
+  \item Swiper Documentation\\
+  \url{https://swiperjs.com/}
+
+  \item DOMPurify --- XSS Sanitizer\\
+  \url{https://github.com/cure53/DOMPurify}
+
+  \item Lucide React Icons\\
+  \url{https://lucide.dev/}
+
+  \item conneqtedagents.ai\\
+  \url{https://conneqtedagents.ai}
+\end{itemize}
+
+\bibliographystyle{IEEEtran}
+\cleardoublepage
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibliography{bibs}
+
+\end{document}
